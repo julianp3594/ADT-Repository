@@ -1,5 +1,5 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef SINGLYLINKEDLISTQUEUE_H
+#define SINGLYLINKEDLISTQUEUE_H
 
 #include <iostream>
 
