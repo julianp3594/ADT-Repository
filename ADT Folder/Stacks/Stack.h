@@ -1,9 +1,9 @@
-#ifndef STACKADT_H
-#define STACKADT_H
+#ifndef STACK_H
+#define STACK_H
 
 #include <iostream>
 
-class StackADT {
+class Stack {
 public:
    // Member functions that may change the stack
    virtual bool Push(int item) = 0;
