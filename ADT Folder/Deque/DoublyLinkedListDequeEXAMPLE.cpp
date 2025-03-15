@@ -8,6 +8,9 @@ int main() {
     DoublyLinkedListDeque newDeque;
 
     // Add values to the deque
+    if (newDeque.isEmpty() == true) {
+        cout << "The deque is empty..." << endl;
+    }
     cout << "Adding numbers to deque... " << endl;
     for (int i = 1; i <= 10; i++) {
         int num = i;
@@ -19,6 +22,9 @@ int main() {
             newDeque.PushFront((num+num)/2);
             cout << "Front: " << newDeque.PeekFront() << endl;
         }
+    }
+    if (newDeque.isEmpty() == false) {
+        cout << "The deque contains data." << endl;
     }
     cout << "Current length: " << newDeque.GetLength() << endl;
     cout << endl;

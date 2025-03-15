@@ -172,6 +172,15 @@ public:
       int ValueToReturn = linkedList.GetLength();
       return ValueToReturn;
    }
+
+   bool isEmpty() {
+      if (linkedList.GetLength() == 0) {
+         return true;
+      }
+      else {
+         return false;
+      }
+   }
 };
 
 #endif
