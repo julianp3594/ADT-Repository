@@ -156,12 +156,12 @@ class Node {
       }
    };
 
-class Queue {
+class SinglyLinkedListQueue {
 private:
    LinkedList linkedList;
 
 public:
-   Queue() {
+   SinglyLinkedListQueue() {
    }
    
    void Enqueue(int newData) {

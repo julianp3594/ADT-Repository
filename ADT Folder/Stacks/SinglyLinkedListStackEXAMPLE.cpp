@@ -6,7 +6,7 @@ int main() {
    int numbers[] = { 83, 27, 44, 55, 66, 16, 42, 73, 75 };
       
    // Initialize a new Stack and add numbers
-   Stack numStack;
+   SinglyLinkedListStack numStack;
    for (int number : numbers) {
       numStack.Push(number);
    }

@@ -156,12 +156,12 @@ public:
    }
 };
 
-class Stack {
+class SinglyLinkedListStack {
 private:
    LinkedList linkedList;
 
 public:
-   Stack() {
+   SinglyLinkedListStack() {
    }
    
    void Push(int newData) {

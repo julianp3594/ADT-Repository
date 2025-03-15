@@ -6,7 +6,7 @@ int main() {
    int numbers[] = { 83, 27, 44, 55, 66, 16, 42, 73, 75 };
       
    // Initialize a new Queue and add numbers
-   Queue numQueue;
+   SinglyLinkedListQueue numQueue;
    for (int number : numbers) {
        numQueue.Enqueue(number);
    }

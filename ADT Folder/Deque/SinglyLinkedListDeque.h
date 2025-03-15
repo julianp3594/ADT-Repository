@@ -200,7 +200,7 @@ public:
     linkedList.Prepend(newNode);
    }
    
-   int PushFront() {
+   int PopFront() {
       // Copy list head's data
       int pushedItem = linkedList.GetHeadData();
       
@@ -211,7 +211,7 @@ public:
       return pushedItem;
    }
 
-   int PushBack() {
+   int PopBack() {
     // Copy list tail's data
     int pushedItem = linkedList.GetTailData();
 
