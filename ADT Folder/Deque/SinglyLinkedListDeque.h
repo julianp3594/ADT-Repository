@@ -1,4 +1,4 @@
-/*
+
 #ifndef SINGLYLINKEDLISTDEQUE_H
 #define SINGLYLINKEDLISTDEQUE_H
 
@@ -57,35 +57,6 @@ class Node {
          }
       }
       
-      void PrintList(std::ostream& printStream, const std::string& separator = ", ") {
-         Node* node = head;
-         if (node) {
-             // Head node is not preceded by separator
-             printStream << node->data;
-             node = node->next;
-         }
-         while (node) {
-            printStream << separator << node->data;
-            node = node->next;
-         }
-         printStream << std::endl;
-      }
-      
-      void InsertAfter(Node* currentNode, Node* newNode) {
-         if (head == nullptr) {
-            head = newNode;
-            tail = newNode;
-         }
-         else if (currentNode == tail) {
-            tail->next = newNode;
-            tail = newNode;
-         }
-         else {
-            newNode->next = currentNode->next;
-            currentNode->next = newNode;
-         }
-      }
-      
       void RemoveAfter(Node* currentNode) {
          if (currentNode == nullptr && head) {
             // Special case: remove head
@@ -98,72 +69,28 @@ class Node {
                 tail = nullptr;
             }
          }
-         else if (tail) {
-            currentNode = head;
-            while (currentNode->next != nullptr) {
-                currentNode->next;
+         else {
+            Node* savedNode = head;
+            Node* newTail = head;
+            while (newTail->next->next) {
+               newTail = newTail->next;
             }
-            Node* newTail;
-            Node* nodeBeingRemoved = currentNode;
-            newTail = head;
-            while (newTail->next->next != nullptr) {
-                newTail->next;
-            }
-            delete nodeBeingRemoved;
+            newTail->next = nullptr;
             tail = newTail;
-
-         }
-         else if (currentNode->next) {
-            Node* nodeBeingRemoved = currentNode->next;
-            Node* succeedingNode = currentNode->next->next;
-            currentNode->next = succeedingNode;
+            Node* nodeBeingRemoved = currentNode;
             delete nodeBeingRemoved;
-            if (succeedingNode == nullptr) {
-               // Remove tail
-               tail = currentNode;
-            }
+
          }
       }
       
-      void InsertionSortSinglyLinked() {
-         Node* beforeCurrent = head;
-         Node* currentNode = head->next;
-         while (currentNode) {
-            Node* nextNode = currentNode->next;
-            Node* position = FindInsertionPosition(currentNode->data);
-            if (position == beforeCurrent) {
-               beforeCurrent = currentNode;
-            }
-            else {
-               // Remove, but do not deallocate, currentNode
-               Node* succeedingNode = currentNode->next;
-               beforeCurrent->next = succeedingNode;
-               if (succeedingNode == nullptr) {
-                  // Remove tail
-                  tail = beforeCurrent;
-               }
-               currentNode->next = nullptr;
-   
-               // Insert currentNode back into list in sorted position
-               if (position == nullptr) {
-                  Prepend(currentNode);
-               }
-               else {
-                  InsertAfter(position, currentNode);
-               }
-            }
-            currentNode = nextNode;
+      int GetLength() {
+         Node* lengthNode = head;
+         int length = 0;
+         for (int i = 0; lengthNode; i++) {
+            lengthNode = lengthNode->next;
+            length++;
          }
-      }
-   
-      Node* FindInsertionPosition(int dataValue) {
-         Node* positionA = nullptr;
-         Node* positionB = head;
-         while (positionB && dataValue > positionB->data) {
-            positionA = positionB;
-            positionB = positionB->next;
-         }
-         return positionA;
+         return length;
       }
       
       // Added for deque section
@@ -176,12 +103,12 @@ class Node {
       }
    };
 
-class Deque {
+class SinglyLinkedListDeque {
 private:
    LinkedList linkedList;
 
 public:
-   Deque() {
+   SinglyLinkedListDeque() {
    }
    
    void PushBack(int newData) {
@@ -213,16 +140,49 @@ public:
 
    int PopBack() {
     // Copy list tail's data
-    int pushedItem = linkedList.GetTailData();
+      int pushedItem = linkedList.GetTailData();
 
+      // Create a node for the tail to go into
+      Node* tailNode = new Node(pushedItem);
+      std::cout << linkedList.GetTailData() << std::endl;
     // Remove list tail
-    linkedList.
+      linkedList.RemoveAfter(tailNode);
+
+      // Return pushed item
+      return pushedItem;
+   }
+
+   int PeekFront() {
+      // Copy list's head data
+      int pushedItem = linkedList.GetHeadData();
+
+      // Output the head data
+      return pushedItem;
+   }
+
+   int PeekBack() {
+      // Copy list's tail data
+      int pushedItem = linkedList.GetTailData();
+
+      // Output the tail data
+      return pushedItem;
+   }
+
+   int GetLength() {
+      int ValueToReturn = linkedList.GetLength();
+      return ValueToReturn;
+   }
+
+   bool isEmpty() {
+      if (linkedList.GetLength() == 0) {
+         return true;
+      }
+      else {
+         return false;
+      }
    }
    
-   void Print(std::ostream& printStream) {
-      linkedList.PrintList(printStream);
-   }
+   
 };
 
 #endif
-*/
