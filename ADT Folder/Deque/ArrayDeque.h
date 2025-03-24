@@ -103,7 +103,7 @@ public:
 
     //Push front the item and return true
     int itemIndex = frontIndex;
-    if (array[itemIndex] >= 0 || array[itemIndex] < 0) {
+    if (array[itemIndex]) {
         int itemMover;
         for (int i = length; i > 0; i--) {
             itemMover = array[(i + (frontIndex - 1)) % allocationSize];
